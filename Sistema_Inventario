@@ -1,50 +1,42 @@
-Console.Write("\t!Bienvenido al sistema de inventario¡");
-
+Console.WriteLine("\t¡Bienvenido al sistema de inventario!");
+    //Declaramos las variables que vamos a usar
 string nombre;
 decimal precio;
 int cantidad;
 
+    //Solicitamos al usuario ingresar la informacion
 Console.Write("Ingrese el nombre del producto: ");
-string nombre = Console.ReadLine();
+nombre = Console.ReadLine() ?? "";
+    // ?? "" - Determina que si el usuario no ingresa un dato queda un texto vacio
 
 Console.Write("Ingrese el precio del producto: ");
-string entradaPrecio = Console.ReadLine();
-
-decimal precio;
-
+string entradaPrecio = Console.ReadLine() ?? "";
 bool precioValido = decimal.TryParse(entradaPrecio, out precio);
+    // La variable bool nos permite identificar si la conversión del dato fue exitosa.
+    // decimal.TryParse intenta convertir el texto ingresado por el usuario en un número decimal.
 
-if (!precioValido)
+Console.Write("Ingrese la cantidad del producto: ");
+string entradaCantidad = Console.ReadLine() ?? "";
+bool cantidadValida = int.TryParse(entradaCantidad, out cantidad);
+
+
+    // Nombre no puede quedar vacio
+if (string.IsNullOrWhiteSpace(nombre))
 {
-    Console.WriteLine("Registro rechazado: el precio debe ser un número válido.");
+    Console.WriteLine("Registro rechazado: el nombre del producto no puede quedar vacío.");
 }
-else if (precio < 0)
+    // Precio no puede ser negativo
+if (precio < 0)
 {
     Console.WriteLine("Registro rechazado: el precio no puede ser negativo.");
 }
-
-Console.Write("Ingrese la cantidad del producto: ");
-string entradaCantidad = Console.ReadLine();
-
-int cantidad;
-
-bool cantidadValida = int.TryParse(entradaCantidad, out cantidad);
-
-if (!cantidadValida)
-{
-    Console.WriteLine("Registro rechazado: la cantidad debe ser un número entero válido.");
-}
-else if (cantidad > 1000)
+    // Cantidad maxima de 1000 unidades
+if (cantidad > 1000)
 {
     Console.WriteLine("Registro rechazado: la cantidad no puede superar las 1000 unidades.");
 }
-
-----
-Console.Write("Nombre: ");
-string titulo = Console.ReadLine() ?? "";
-
-Console.Write("Cantidad: ");
-string? textocantidad = Console.ReadLine();
-int.TryParse(textocantidad, out int cantidad);
-
-Console.WriteLine($"Registraste \"{titulo}\" con {ejemplares} ejemplar(es).");
+else
+{
+    Console.WriteLine("\n¡Registro válido!");
+    Console.WriteLine($"Registraste \"{nombre}\" con un valor de {precio} y se encuentrasn disponibles {cantidad} unidades.");
+}
