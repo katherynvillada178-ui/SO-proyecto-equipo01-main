@@ -26,12 +26,12 @@ if (string.IsNullOrWhiteSpace(nombre))
     Console.WriteLine("Registro rechazado: el nombre del producto no puede quedar vacío.");
 }
     // Precio no puede ser negativo
-if (precio < 0)
+else if (precio < 0)
 {
     Console.WriteLine("Registro rechazado: el precio no puede ser negativo.");
 }
     // Cantidad maxima de 1000 unidades
-if (cantidad > 1000)
+else if (cantidad > 1000)
 {
     Console.WriteLine("Registro rechazado: la cantidad no puede superar las 1000 unidades.");
 }
