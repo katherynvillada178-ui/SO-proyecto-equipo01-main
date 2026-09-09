@@ -1,0 +1,50 @@
+Console.Write("\t!Bienvenido al sistema de inventario¡");
+
+string nombre;
+decimal precio;
+int cantidad;
+
+Console.Write("Ingrese el nombre del producto: ");
+string nombre = Console.ReadLine();
+
+Console.Write("Ingrese el precio del producto: ");
+string entradaPrecio = Console.ReadLine();
+
+decimal precio;
+
+bool precioValido = decimal.TryParse(entradaPrecio, out precio);
+
+if (!precioValido)
+{
+    Console.WriteLine("Registro rechazado: el precio debe ser un número válido.");
+}
+else if (precio < 0)
+{
+    Console.WriteLine("Registro rechazado: el precio no puede ser negativo.");
+}
+
+Console.Write("Ingrese la cantidad del producto: ");
+string entradaCantidad = Console.ReadLine();
+
+int cantidad;
+
+bool cantidadValida = int.TryParse(entradaCantidad, out cantidad);
+
+if (!cantidadValida)
+{
+    Console.WriteLine("Registro rechazado: la cantidad debe ser un número entero válido.");
+}
+else if (cantidad > 1000)
+{
+    Console.WriteLine("Registro rechazado: la cantidad no puede superar las 1000 unidades.");
+}
+
+----
+Console.Write("Nombre: ");
+string titulo = Console.ReadLine() ?? "";
+
+Console.Write("Cantidad: ");
+string? textocantidad = Console.ReadLine();
+int.TryParse(textocantidad, out int cantidad);
+
+Console.WriteLine($"Registraste \"{titulo}\" con {ejemplares} ejemplar(es).");
